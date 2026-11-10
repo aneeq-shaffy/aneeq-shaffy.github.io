@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { animate, utils } from 'animejs'
 import { motion } from 'motion/react'
-import ContourField from './ContourField.jsx'
+import WebGLContour from './WebGLContour.jsx'
 import useTilt from '../hooks/useTilt.js'
 
 function SplitLetters({ text, className = '' }) {
@@ -60,7 +60,7 @@ export default function Hero() {
       className="relative mx-auto max-w-[1180px] overflow-hidden border-b border-border px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-28"
       style={{ '--spot-x': '50%', '--spot-y': '30%' }}
     >
-      <ContourField className="opacity-60" />
+      <WebGLContour className="opacity-70" />
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-300"
         style={{

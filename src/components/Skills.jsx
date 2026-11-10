@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
 import { RevealGroup, revealItem } from './Reveal.jsx'
+import CircuitTrace from './CircuitTrace.jsx'
 
 const BLOCKS = [
   {
@@ -22,7 +23,8 @@ const BLOCKS = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-[1180px] border-b border-border px-5 py-16 sm:px-8 sm:py-24">
+    <section id="skills" className="relative mx-auto max-w-[1180px] overflow-hidden border-b border-border px-5 py-16 sm:px-8 sm:py-24">
+      <CircuitTrace className="opacity-80" />
       <SectionHeading
         label="05 / SKILLS"
         title="Technical Skills"
