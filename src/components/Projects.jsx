@@ -116,7 +116,7 @@ function ProjectCard({ p }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
+    <section className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8">
       <SectionHeading
         label="Projects"
         title="Things I've shipped"

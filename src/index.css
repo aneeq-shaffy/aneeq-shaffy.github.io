@@ -15,20 +15,24 @@
   --color-accent-dim: #3a3a38;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  overscroll-behavior: none;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body.cursor-active,
-  body.cursor-active a,
-  body.cursor-active button {
-    cursor: none;
-  }
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }

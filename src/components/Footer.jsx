@@ -2,15 +2,14 @@ import { useEffect, useRef } from 'react'
 import { animate, utils } from 'animejs'
 
 const NAV = [
-  { label: 'about', href: '#about' },
-  { label: 'experience', href: '#experience' },
-  { label: 'projects', href: '#projects' },
-  { label: 'education', href: '#education' },
-  { label: 'skills', href: '#skills' },
-  { label: 'contact', href: '#contact' },
+  { label: 'about', index: 0 },
+  { label: 'experience', index: 1 },
+  { label: 'projects', index: 2 },
+  { label: 'education', index: 3 },
+  { label: 'skills', index: 4 },
 ]
 
-function LetterLink({ label, href }) {
+function LetterLink({ label, index, onNavigate }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -36,29 +35,29 @@ function LetterLink({ label, href }) {
   }, [])
 
   return (
-    <a
-      href={href}
-      className="block w-max font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-ink-dim sm:text-3xl"
+    <button
+      onClick={() => onNavigate(index)}
+      className="block w-max text-left font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-ink-dim sm:text-3xl"
     >
       <span ref={ref} aria-label={label}>
         {label.split('').map((ch, i) => (
           <span key={i} aria-hidden className="nav-letter inline-block opacity-0">
-            {ch === ' ' ? ' ' : ch}
+            {ch === ' ' ? ' ' : ch}
           </span>
         ))}
       </span>
-    </a>
+    </button>
   )
 }
 
-export default function Footer() {
+export default function Footer({ onNavigate = () => {} }) {
   return (
     <section className="mx-auto max-w-[1280px] border-t border-border px-5 py-16 sm:px-8 sm:py-20">
       <div className="flex flex-col gap-14">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <nav aria-label="Primary" className="flex flex-col gap-3">
             {NAV.map((item) => (
-              <LetterLink key={item.href} {...item} />
+              <LetterLink key={item.index} {...item} onNavigate={onNavigate} />
             ))}
           </nav>
 

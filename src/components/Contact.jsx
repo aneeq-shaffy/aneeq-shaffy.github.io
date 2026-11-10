@@ -14,7 +14,7 @@ const ROWS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
+    <section className="mx-auto max-w-[1280px] px-5 py-16 sm:px-8">
       <SectionHeading
         label="Contact"
         title="Get in touch"

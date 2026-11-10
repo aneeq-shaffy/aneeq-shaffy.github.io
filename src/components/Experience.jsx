@@ -11,7 +11,7 @@ const BULLETS = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
+    <section className="mx-auto flex h-full max-w-[1280px] flex-col justify-center px-5 py-16 sm:px-8">
       <SectionHeading
         label="Experience"
         title="Where I've worked"

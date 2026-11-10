@@ -1,13 +1,3 @@
-import { useState } from 'react'
-
-const NAV_ITEMS = [
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#education', label: 'Education' },
-  { href: '#skills', label: 'Skills' },
-]
-
 function Mark() {
   return (
     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
@@ -21,49 +11,37 @@ function Mark() {
   )
 }
 
-export default function Header() {
-  const [open, setOpen] = useState(false)
+export default function Header({ slides, activeIndex, onNavigate }) {
+  const contactIndex = slides.length - 1
 
   return (
-    <header className="relative z-50 mx-auto flex max-w-[1280px] items-center justify-between px-5 py-7 sm:px-8">
-      <a href="#top" className="flex items-center gap-2 text-ink">
+    <header className="relative z-50 mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-6 sm:px-8">
+      <button onClick={() => onNavigate(0)} className="flex items-center gap-2 text-ink">
         <Mark />
-      </a>
+      </button>
 
-      <nav className="hidden items-center gap-9 text-[0.95rem] text-ink sm:flex">
-        {NAV_ITEMS.map((item) => (
-          <a key={item.href} href={item.href} className="whitespace-nowrap text-ink-dim transition-colors hover:text-ink">
-            {item.label}
-          </a>
+      <nav className="hidden items-center gap-8 text-[0.9rem] sm:flex">
+        {slides.map((s, i) => (
+          <button
+            key={s.id}
+            onClick={() => onNavigate(i)}
+            className={`whitespace-nowrap transition-colors ${i === activeIndex ? 'text-ink' : 'text-ink-dim hover:text-ink'}`}
+          >
+            {s.label}
+          </button>
         ))}
       </nav>
 
-      <a href="#contact" className="hidden items-center gap-1.5 border-b border-ink pb-0.5 text-[0.95rem] text-ink sm:flex">
-        Get in touch <span className="text-sm">↗</span>
-      </a>
-
       <button
-        aria-label="Toggle navigation"
-        onClick={() => setOpen((v) => !v)}
-        className="flex flex-col gap-1.5 p-2 sm:hidden"
+        onClick={() => onNavigate(contactIndex)}
+        className="hidden items-center gap-1.5 border-b border-ink pb-0.5 text-[0.9rem] text-ink sm:flex"
       >
-        <span className="h-0.5 w-[22px] bg-ink" />
-        <span className="h-0.5 w-[22px] bg-ink" />
-        <span className="h-0.5 w-[22px] bg-ink" />
+        Get in touch <span className="text-sm">↗</span>
       </button>
 
-      {open && (
-        <nav className="absolute inset-x-0 top-full flex flex-col gap-4 border-b border-border bg-bg px-5 pb-6 pt-4 text-sm text-ink-dim sm:hidden">
-          {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="transition-colors hover:text-ink">
-              {item.label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="text-ink">
-            Get in touch ↗
-          </a>
-        </nav>
-      )}
+      <span className="font-mono text-xs text-ink-faint sm:hidden">
+        {String(activeIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+      </span>
     </header>
   )
 }

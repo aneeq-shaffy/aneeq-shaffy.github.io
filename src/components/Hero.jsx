@@ -28,7 +28,7 @@ function SplitWords({ text, className = '' }) {
   )
 }
 
-export default function Hero() {
+export default function Hero({ onNext }) {
   return (
     <section id="about" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-bg">
       {/* Full-bleed portrait, right edge of the viewport */}
@@ -144,9 +144,9 @@ export default function Hero() {
 
         <div className="mt-10 flex items-center justify-between border-t border-border pt-5 font-mono text-xs uppercase tracking-wide text-ink-faint">
           <span>2026</span>
-          <a href="#experience" className="flex items-center gap-2 hover:text-ink">
-            Scroll down <span className="animate-bounce">↓</span>
-          </a>
+          <button onClick={onNext} className="flex items-center gap-2 hover:text-ink">
+            Next <span className="animate-pulse">→</span>
+          </button>
         </div>
       </div>
     </section>
