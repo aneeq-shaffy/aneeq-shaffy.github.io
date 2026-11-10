@@ -49,7 +49,7 @@ export default function CustomCursor() {
       animate={{
         width: hovering ? 48 : 16,
         height: hovering ? 48 : 16,
-        backgroundColor: hovering ? 'rgba(200,255,61,0.15)' : 'rgba(200,255,61,0.9)',
+        backgroundColor: hovering ? 'rgba(26,26,26,0.12)' : 'rgba(26,26,26,0.9)',
       }}
       transition={{ type: 'spring', damping: 22, stiffness: 300 }}
     />

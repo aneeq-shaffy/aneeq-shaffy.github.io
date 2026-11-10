@@ -61,7 +61,7 @@ function ProjectCard({ p }) {
           <span className="font-mono text-sm text-ink-faint">{p.index}</span>
           <span className="font-mono text-[0.68rem] tracking-wide text-accent">Full-Stack</span>
         </div>
-        <h3 className="mb-1 text-xl font-semibold">{p.name}</h3>
+        <h3 className="mb-1 font-display text-xl font-semibold">{p.name}</h3>
         <p className="mb-4 text-sm text-ink-dim">{p.tagline}</p>
         <p className="mb-5 flex-1 text-sm text-ink-dim">{p.description}</p>
 
@@ -83,11 +83,11 @@ function ProjectCard({ p }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-[1180px] border-b border-border px-5 py-16 sm:px-8 sm:py-24">
+    <section id="projects" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading
-        label="03 / PROJECTS"
-        title="Projects"
-        subtitle="Featured development work & technical achievements"
+        label="Projects"
+        title="Things I've built"
+        subtitle="Personal work — side projects, built and shipped in my own time"
       />
 
       <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.12} style={{ perspective: 1200 }}>

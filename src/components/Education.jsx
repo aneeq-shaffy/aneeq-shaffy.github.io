@@ -17,9 +17,9 @@ export default function Education() {
     <section
       ref={sectionRef}
       id="education"
-      className="mx-auto max-w-[1180px] border-b border-border px-5 py-16 sm:px-8 sm:py-24"
+      className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28"
     >
-      <SectionHeading label="04 / EDUCATION" title="Education" subtitle="Academic background & qualifications" />
+      <SectionHeading label="Education" title="Academic background" subtitle="Qualifications & coursework" />
 
       <div className="relative">
         {/* The progress rail: fills as the section crosses the viewport, with
@@ -42,7 +42,7 @@ export default function Education() {
             style={{ clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%)' }}
           >
             <div className="mb-2 font-mono text-sm text-ink-faint">Feb 2021 — 2026</div>
-            <h3 className="mb-1 text-lg font-semibold">BSc (Hons) in Information Technology</h3>
+            <h3 className="mb-1 font-display text-lg font-semibold">BSc (Hons) in Information Technology</h3>
             <div className="mb-4 text-sm text-accent">Sri Lanka Institute of Information Technology, Malabe</div>
             <ul className="flex list-disc flex-col gap-2 pl-5 text-sm text-ink-dim">
               <li>
@@ -81,7 +81,7 @@ export default function Education() {
             style={{ clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%)' }}
           >
             <div className="mb-2 font-mono text-sm text-ink-faint">Sep 2017 — Mar 2019</div>
-            <h3 className="mb-1 text-lg font-semibold">Cambridge International A Level — Commerce</h3>
+            <h3 className="mb-1 font-display text-lg font-semibold">Cambridge International A Level — Commerce</h3>
             <div className="mb-4 text-sm text-accent">Lyceum International School, Nugegoda</div>
             <div>
               <span className="mb-2 block font-mono text-[0.68rem] tracking-wide text-ink-faint">Subjects</span>

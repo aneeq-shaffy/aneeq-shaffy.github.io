@@ -3,15 +3,16 @@
 @theme {
   --font-mono: "JetBrains Mono", monospace;
   --font-sans: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
 
-  --color-bg: #0b0d0f;
-  --color-bg-elevated: #121417;
-  --color-border: #22262b;
-  --color-ink: #e8eaed;
-  --color-ink-dim: #9aa0a6;
-  --color-ink-faint: #5f6368;
-  --color-accent: #c8ff3d;
-  --color-accent-dim: #9ad62e;
+  --color-bg: #f8f8f6;
+  --color-bg-elevated: #ffffff;
+  --color-border: #e4e3df;
+  --color-ink: #1a1a1a;
+  --color-ink-dim: #5a5a58;
+  --color-ink-faint: #a2a19c;
+  --color-accent: #1a1a1a;
+  --color-accent-dim: #3a3a38;
 }
 
 html {
