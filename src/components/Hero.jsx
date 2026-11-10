@@ -31,28 +31,6 @@ function SplitWords({ text, className = '' }) {
 export default function Hero({ onNext }) {
   return (
     <section id="about" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-bg">
-      {/* Full-bleed portrait, right edge of the viewport */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.04 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: [0.2, 0, 0, 1] }}
-        className="absolute inset-y-0 right-0 hidden w-[46%] sm:block lg:w-[42%]"
-      >
-        <img
-          src="/assets/aneeq-headshot-graded.jpg"
-          alt="Aneeq Shaffy - Software Developer"
-          className="h-full w-full object-cover object-top"
-        />
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ background: 'linear-gradient(to top, var(--color-bg) 0%, transparent 28%)' }}
-        />
-        <div
-          className="pointer-events-none absolute inset-0 hidden lg:block"
-          style={{ background: 'linear-gradient(to right, var(--color-bg) 0%, transparent 12%)' }}
-        />
-      </motion.div>
-
       {/* Ghost background word */}
       <span
         aria-hidden
@@ -63,14 +41,14 @@ export default function Hero({ onNext }) {
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-between px-5 py-8 sm:px-8">
         <div className="flex flex-1 flex-col justify-center">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_1fr] lg:gap-6">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-10">
             <div className="hidden lg:block">
               <span className="block origin-bottom-left -rotate-90 whitespace-nowrap font-mono text-xs uppercase tracking-[0.2em] text-ink-dim">
                 Software developer
               </span>
             </div>
 
-            <div className="lg:max-w-[54%]">
+            <div className="max-w-[620px]">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -139,6 +117,26 @@ export default function Hero({ onNext }) {
                 </a>
               </motion.div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.2, 0, 0, 1] }}
+              className="mx-auto flex flex-col items-center gap-4"
+            >
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">01 / Profile</span>
+              <div className="relative h-[220px] w-[220px] sm:h-[260px] sm:w-[260px]">
+                <div className="absolute -inset-3 rounded-full border border-border" />
+                <div className="h-full w-full overflow-hidden rounded-full border border-border bg-bg-elevated">
+                  <img
+                    src="/assets/aneeq-headshot-graded.jpg"
+                    alt="Aneeq Shaffy - Software Developer"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </div>
+                <span className="absolute right-1 top-1 h-3.5 w-3.5 rounded-full bg-red-500 ring-[3px] ring-bg" />
+              </div>
+            </motion.div>
           </div>
         </div>
 
