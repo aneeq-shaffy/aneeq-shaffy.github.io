@@ -23,3 +23,11 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-active,
+  body.cursor-active a,
+  body.cursor-active button {
+    cursor: none;
+  }
+}

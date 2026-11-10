@@ -1,4 +1,7 @@
+import { motion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
+import Reveal, { RevealGroup, revealItem } from './Reveal.jsx'
+import useTilt from '../hooks/useTilt.js'
 
 const PROJECTS = [
   {
@@ -33,6 +36,51 @@ const PROJECTS = [
   },
 ]
 
+function ProjectCard({ p }) {
+  const tilt = useTilt(6)
+
+  return (
+    <motion.article
+      ref={tilt.ref}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY, transformStyle: 'preserve-3d' }}
+      variants={revealItem}
+      className="group flex flex-col overflow-hidden rounded-md border border-border bg-bg-elevated transition-colors hover:border-accent"
+    >
+      <a href={p.code} target="_blank" rel="noopener" className="block aspect-video overflow-hidden border-b border-border">
+        <img
+          src={p.image}
+          alt={`${p.name} project screenshot`}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </a>
+
+      <div className="flex flex-1 flex-col p-7" style={{ transform: 'translateZ(20px)' }}>
+        <div className="mb-3 flex items-center justify-between">
+          <span className="font-mono text-sm text-ink-faint">{p.index}</span>
+          <span className="font-mono text-[0.68rem] tracking-wide text-accent">Full-Stack</span>
+        </div>
+        <h3 className="mb-1 text-xl font-semibold">{p.name}</h3>
+        <p className="mb-4 text-sm text-ink-dim">{p.tagline}</p>
+        <p className="mb-5 flex-1 text-sm text-ink-dim">{p.description}</p>
+
+        <div className="mb-5 flex flex-wrap gap-1.5">
+          {p.tech.map((t) => (
+            <span key={t} className="rounded-sm border border-border bg-bg px-2 py-1 font-mono text-[0.7rem] text-ink-dim">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <a href={p.code} target="_blank" rel="noopener" className="font-mono text-sm font-bold text-accent hover:underline">
+          View Code →
+        </a>
+      </div>
+    </motion.article>
+  )
+}
+
 export default function Projects() {
   return (
     <section id="projects" className="mx-auto max-w-[1180px] border-b border-border px-5 py-16 sm:px-8 sm:py-24">
@@ -42,51 +90,13 @@ export default function Projects() {
         subtitle="Featured development work & technical achievements"
       />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.12} style={{ perspective: 1200 }}>
         {PROJECTS.map((p) => (
-          <article
-            key={p.index}
-            className="group flex flex-col overflow-hidden rounded-md border border-border bg-bg-elevated transition-all hover:-translate-y-0.5 hover:border-accent"
-          >
-            <a href={p.code} target="_blank" rel="noopener" className="block aspect-video overflow-hidden border-b border-border">
-              <img
-                src={p.image}
-                alt={`${p.name} project screenshot`}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </a>
-
-            <div className="flex flex-1 flex-col p-7">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="font-mono text-sm text-ink-faint">{p.index}</span>
-                <span className="font-mono text-[0.68rem] tracking-wide text-accent">Full-Stack</span>
-              </div>
-              <h3 className="mb-1 text-xl font-semibold">{p.name}</h3>
-              <p className="mb-4 text-sm text-ink-dim">{p.tagline}</p>
-              <p className="mb-5 flex-1 text-sm text-ink-dim">{p.description}</p>
-
-              <div className="mb-5 flex flex-wrap gap-1.5">
-                {p.tech.map((t) => (
-                  <span key={t} className="rounded-sm border border-border bg-bg px-2 py-1 font-mono text-[0.7rem] text-ink-dim">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={p.code}
-                target="_blank"
-                rel="noopener"
-                className="font-mono text-sm font-bold text-accent hover:underline"
-              >
-                View Code →
-              </a>
-            </div>
-          </article>
+          <ProjectCard key={p.index} p={p} />
         ))}
-      </div>
+      </RevealGroup>
 
-      <div className="mt-12 rounded-md border border-border bg-bg-elevated p-10 text-center">
+      <Reveal delay={0.1} className="mt-12 rounded-md border border-border bg-bg-elevated p-10 text-center">
         <p className="mb-5 text-xl font-semibold">Interested in collaborating?</p>
         <a
           href="#contact"
@@ -94,7 +104,7 @@ export default function Projects() {
         >
           Get In Touch
         </a>
-      </div>
+      </Reveal>
     </section>
   )
 }

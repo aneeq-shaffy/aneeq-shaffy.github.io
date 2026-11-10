@@ -1,4 +1,6 @@
+import { motion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
+import Reveal, { RevealGroup, revealItem } from './Reveal.jsx'
 
 const ROWS = [
   { k: 'Email', v: 'aneeqshaffy7@gmail.com', href: 'mailto:aneeqshaffy7@gmail.com?subject=Let%27s%20Connect' },
@@ -18,10 +20,11 @@ export default function Contact() {
       />
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <div>
+        <RevealGroup stagger={0.07}>
           {ROWS.map((row) => (
-            <div
+            <motion.div
               key={row.k}
+              variants={revealItem}
               className="flex flex-wrap items-center justify-between gap-2 border-t border-border py-4 text-sm"
             >
               <span className="font-mono text-xs text-ink-faint">{row.k}</span>
@@ -37,11 +40,11 @@ export default function Contact() {
               ) : (
                 <span>{row.v}</span>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </RevealGroup>
 
-        <div className="rounded-md border border-border bg-bg-elevated p-8">
+        <Reveal delay={0.1} className="rounded-md border border-border bg-bg-elevated p-8">
           <h3 className="mb-4 text-xl font-semibold">Let's collaborate</h3>
           <p className="mb-7 text-sm text-ink-dim">
             Open to full-time, freelance, and contract work — frontend, backend, or full-stack.
@@ -64,7 +67,7 @@ export default function Contact() {
               View CV
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

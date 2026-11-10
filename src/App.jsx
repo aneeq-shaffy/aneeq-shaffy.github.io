@@ -6,10 +6,15 @@ import Education from './components/Education.jsx'
 import Skills from './components/Skills.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import CustomCursor from './components/CustomCursor.jsx'
+import useLenis from './hooks/useLenis.js'
 
 export default function App() {
+  useLenis()
+
   return (
     <div id="top">
+      <CustomCursor />
       <Header />
       <main>
         <Hero />

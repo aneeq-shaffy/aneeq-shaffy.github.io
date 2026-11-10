@@ -1,4 +1,6 @@
+import { motion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
+import { RevealGroup, revealItem } from './Reveal.jsx'
 
 const BLOCKS = [
   {
@@ -27,9 +29,9 @@ export default function Skills() {
         subtitle="Technologies I use daily — and a few I'm still leveling up on"
       />
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
         {BLOCKS.map((block) => (
-          <div key={block.code} className="rounded-md border border-border bg-bg-elevated p-7">
+          <motion.div key={block.code} variants={revealItem} className="rounded-md border border-border bg-bg-elevated p-7">
             <div className="mb-5 flex items-center gap-3">
               <span className="rounded-sm border border-accent px-1.5 py-0.5 font-mono text-xs text-accent">
                 {block.code}
@@ -38,15 +40,23 @@ export default function Skills() {
               <span className="font-mono text-sm text-ink-faint">{block.items.length}</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {block.items.map((item) => (
-                <span key={item} className="rounded-full border border-border px-3 py-1 text-sm text-ink-dim">
+              {block.items.map((item, i) => (
+                <motion.span
+                  key={item}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 + i * 0.03, duration: 0.3, ease: [0.2, 0, 0, 1] }}
+                  whileHover={{ scale: 1.08, borderColor: 'var(--color-accent)', color: 'var(--color-accent)' }}
+                  className="rounded-full border border-border px-3 py-1 text-sm text-ink-dim"
+                >
                   {item}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </RevealGroup>
     </section>
   )
 }
