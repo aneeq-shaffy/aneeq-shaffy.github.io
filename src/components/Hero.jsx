@@ -43,7 +43,14 @@ export default function Hero() {
           alt="Aneeq Shaffy - Software Developer"
           className="h-full w-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg/10 via-transparent to-transparent" />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: 'linear-gradient(to top, var(--color-bg) 0%, transparent 28%)' }}
+        />
+        <div
+          className="pointer-events-none absolute inset-0 hidden lg:block"
+          style={{ background: 'linear-gradient(to right, var(--color-bg) 0%, transparent 12%)' }}
+        />
       </motion.div>
 
       {/* Ghost background word */}
