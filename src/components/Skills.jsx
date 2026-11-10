@@ -22,7 +22,7 @@ const BLOCKS = [
 
 export default function Skills() {
   return (
-    <section className="mx-auto flex h-full max-w-[1280px] flex-col justify-center px-5 py-16 sm:px-8">
+    <section id="skills" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading
         label="Skills"
         title="Technical skills"

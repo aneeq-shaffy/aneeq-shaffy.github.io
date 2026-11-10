@@ -4,7 +4,7 @@ import Reveal from './Reveal.jsx'
 
 export default function Education() {
   return (
-    <section className="mx-auto flex h-full max-w-[1280px] flex-col justify-center px-5 py-16 sm:px-8">
+    <section id="education" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading label="Education" title="Academic background" subtitle="Qualifications & coursework" />
 
       <Reveal className="relative max-w-2xl rounded-md border border-border bg-bg-elevated p-7">

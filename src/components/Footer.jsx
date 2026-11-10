@@ -2,14 +2,14 @@ import { useEffect, useRef } from 'react'
 import { animate, utils } from 'animejs'
 
 const NAV = [
-  { label: 'about', index: 0 },
-  { label: 'experience', index: 1 },
-  { label: 'projects', index: 2 },
-  { label: 'education', index: 3 },
-  { label: 'skills', index: 4 },
+  { label: 'about', href: '#about' },
+  { label: 'experience', href: '#experience' },
+  { label: 'projects', href: '#projects' },
+  { label: 'education', href: '#education' },
+  { label: 'skills', href: '#skills' },
 ]
 
-function LetterLink({ label, index, onNavigate }) {
+function LetterLink({ label, href }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -35,9 +35,9 @@ function LetterLink({ label, index, onNavigate }) {
   }, [])
 
   return (
-    <button
-      onClick={() => onNavigate(index)}
-      className="block w-max text-left font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-ink-dim sm:text-3xl"
+    <a
+      href={href}
+      className="block w-max font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-ink-dim sm:text-3xl"
     >
       <span ref={ref} aria-label={label}>
         {label.split('').map((ch, i) => (
@@ -46,18 +46,18 @@ function LetterLink({ label, index, onNavigate }) {
           </span>
         ))}
       </span>
-    </button>
+    </a>
   )
 }
 
-export default function Footer({ onNavigate = () => {} }) {
+export default function Footer() {
   return (
     <section className="mx-auto max-w-[1280px] border-t border-border px-5 py-16 sm:px-8 sm:py-20">
       <div className="flex flex-col gap-14">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <nav aria-label="Primary" className="flex flex-col gap-3">
             {NAV.map((item) => (
-              <LetterLink key={item.index} {...item} onNavigate={onNavigate} />
+              <LetterLink key={item.href} {...item} />
             ))}
           </nav>
 

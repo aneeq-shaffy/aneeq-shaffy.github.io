@@ -15,24 +15,12 @@
   --color-accent-dim: #3a3a38;
 }
 
-html,
-body,
-#root {
-  height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  overscroll-behavior: none;
-}
-
-.no-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
 }
