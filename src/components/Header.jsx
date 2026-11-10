@@ -8,32 +8,38 @@ const NAV_ITEMS = [
   { href: '#skills', label: 'Skills' },
 ]
 
+function Mark() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
+      <path
+        d="M12 2 L21 7.5 L21 16.5 L12 22 L3 16.5 L3 7.5 Z"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <path d="M12 2 V22 M3 7.5 L21 16.5 M21 7.5 L3 16.5" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
+    </svg>
+  )
+}
+
 export default function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between border-b border-border bg-bg/90 px-5 py-5 backdrop-blur-md sm:px-8">
-      <a href="#top" className="flex items-center gap-2 font-display text-base font-semibold tracking-tight text-ink">
-        <span className="flex h-7 w-7 items-center justify-center rounded-full border border-ink font-mono text-[0.65rem] font-bold">
-          AS
-        </span>
-        <span className="hidden sm:inline">Aneeq Shaffy</span>
+    <header className="relative z-50 mx-auto flex max-w-[1280px] items-center justify-between px-5 py-7 sm:px-8">
+      <a href="#top" className="flex items-center gap-2 text-ink">
+        <Mark />
       </a>
 
-      <nav className="hidden gap-8 text-sm text-ink-dim sm:flex">
+      <nav className="hidden items-center gap-9 text-[0.95rem] text-ink sm:flex">
         {NAV_ITEMS.map((item) => (
-          <a key={item.href} href={item.href} className="whitespace-nowrap transition-colors hover:text-ink">
+          <a key={item.href} href={item.href} className="whitespace-nowrap text-ink-dim transition-colors hover:text-ink">
             {item.label}
           </a>
         ))}
       </nav>
 
-      <a
-        href="#contact"
-        className="group hidden items-center gap-2 border-b border-ink pb-0.5 font-mono text-xs uppercase tracking-wide text-ink sm:flex"
-      >
-        Get In Touch
-        <span className="transition-transform group-hover:translate-x-1">↗</span>
+      <a href="#contact" className="hidden items-center gap-1.5 border-b border-ink pb-0.5 text-[0.95rem] text-ink sm:flex">
+        Get in touch <span className="text-sm">↗</span>
       </a>
 
       <button
@@ -53,8 +59,8 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="font-mono text-xs uppercase tracking-wide text-ink">
-            Get In Touch ↗
+          <a href="#contact" onClick={() => setOpen(false)} className="text-ink">
+            Get in touch ↗
           </a>
         </nav>
       )}
