@@ -89,9 +89,11 @@ export default function Hero() {
             <a href="https://baylanka.net" target="_blank" rel="noopener" className="text-ink underline underline-offset-4 hover:text-ink-dim">
               Baylanka
             </a>
-            , building features on two PHP platforms — a flight-club management SaaS and a
-            multi-tenant property-management system. React, Next.js and a handful of personal
-            projects live in my own time; PHP, jQuery, and Bootstrap pay the bills.
+            , a German-Sri Lankan custom software studio. I build on two real products —{' '}
+            <strong className="font-semibold text-ink">Onres24</strong>, a flight-school management
+            platform, and <strong className="font-semibold text-ink">Woblu Maintenance</strong>, a
+            property-management system for insurance agencies. PHP, MySQL, jQuery, and Bootstrap,
+            day in and day out.
           </p>
           <div className="flex flex-wrap gap-6">
             <a

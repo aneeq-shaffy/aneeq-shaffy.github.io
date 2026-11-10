@@ -6,33 +6,33 @@ import useTilt from '../hooks/useTilt.js'
 const PROJECTS = [
   {
     index: '01',
-    name: 'ITPM-Lingo',
-    tagline: 'English–Sinhala translation platform',
-    image: '/assets/project2.png',
-    code: 'https://github.com/gitPirate12/itpm-lingo-2.0',
+    name: 'Onres24 Dashboard',
+    tagline: 'Flight-school & club management platform',
+    image: '/assets/onres24-dashboard.png',
+    link: 'https://baylanka.net/onres24-dashboard/',
     description:
-      "A translation web app with OAuth 2.0 authentication wired through NextAuth.js and a MongoDB adapter. Built RESTful CRUD APIs, tested with Postman, and integrated three third-party translation APIs from RapidAPI. Restructured the MongoDB schema to resolve UUID/ObjectID compatibility issues, and led the team through to delivery.",
-    tech: ['Next.js', 'MongoDB', 'OAuth 2.0', 'RapidAPI'],
+      'A multi-tenant platform for aviation organisations — reservations, fleet management, flight-instructor billing, a fuel-station module with tank analyses, a digital flight log, SEPA-based billing, and instructor availability tracking.',
+    tech: ['PHP', 'MySQL', 'Bootstrap', 'jQuery', 'Multi-tenant'],
   },
   {
     index: '02',
-    name: 'FitFusion',
-    tagline: 'Fitness social media platform',
-    image: '/assets/project1.png',
-    code: 'https://github.com/gitPirate12/FitFusion',
+    name: 'Onres24 Tracker',
+    tagline: 'Companion app for pilots',
+    image: '/assets/onres24-tracker.png',
+    link: 'https://baylanka.net/oners24-tracker/',
     description:
-      'My first Spring Boot project — a fitness-focused social app built with Spring Boot, React.js, and MongoDB. Learned how models, repositories, and services fit together in a Java backend, added JWT-based authentication, and tested every endpoint through Postman.',
-    tech: ['Spring Boot', 'React.js', 'MongoDB', 'JWT'],
+      'The field-side companion to the Dashboard: pilots record and upload flight data in real time, with live location tracking, flight-path mapping, in-transit encryption, and user-controlled data deletion.',
+    tech: ['Mobile', 'Real-time GPS', 'REST API'],
   },
   {
     index: '03',
-    name: 'Flavor Exchange',
-    tagline: 'Recipe sharing platform',
-    image: '/assets/project3.png',
-    code: 'https://github.com/gitPirate12/flavor-exchange',
+    name: 'Woblu Maintenance',
+    tagline: 'Property-management platform for insurance agencies',
+    image: '/assets/woblu-maintenance.png',
+    link: 'https://baylanka.net/woblu-maintenance/',
     description:
-      "A recipe-sharing platform built with Next.js, React.js, and MongoDB — my first time pairing Mongoose with NextAuth. Built CRUD APIs, used the Context API to manage favorites and recipe state, and worked through a GitHub OAuth2 flow after Mongoose and NextAuth turned out not to play nicely together.",
-    tech: ['Next.js', 'React.js', 'MongoDB', 'Context API'],
+      'A multi-tenant platform built on an in-house PHP MVC framework, mirroring external ERP data (properties, units, contracts) and layering a ticketing system plus email/WhatsApp communication on top.',
+    tech: ['PHP', 'MySQL', 'Multi-tenant', 'Ticketing'],
   },
 ]
 
@@ -46,12 +46,12 @@ function ProjectCard({ p }) {
       onMouseLeave={tilt.onMouseLeave}
       style={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY, transformStyle: 'preserve-3d' }}
       variants={revealItem}
-      className="group flex flex-col overflow-hidden rounded-md border border-border bg-bg-elevated transition-colors hover:border-accent"
+      className="group flex flex-col overflow-hidden rounded-md border border-border bg-bg-elevated transition-colors hover:border-ink"
     >
-      <a href={p.code} target="_blank" rel="noopener" className="block aspect-video overflow-hidden border-b border-border">
+      <a href={p.link} target="_blank" rel="noopener" className="block aspect-video overflow-hidden border-b border-border">
         <img
           src={p.image}
-          alt={`${p.name} project screenshot`}
+          alt={`${p.name} product screenshot`}
           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </a>
@@ -59,7 +59,7 @@ function ProjectCard({ p }) {
       <div className="flex flex-1 flex-col p-7" style={{ transform: 'translateZ(20px)' }}>
         <div className="mb-3 flex items-center justify-between">
           <span className="font-mono text-sm text-ink-faint">{p.index}</span>
-          <span className="font-mono text-[0.68rem] tracking-wide text-accent">Full-Stack</span>
+          <span className="font-mono text-[0.68rem] uppercase tracking-wide text-ink-faint">Baylanka</span>
         </div>
         <h3 className="mb-1 font-display text-xl font-semibold">{p.name}</h3>
         <p className="mb-4 text-sm text-ink-dim">{p.tagline}</p>
@@ -73,8 +73,8 @@ function ProjectCard({ p }) {
           ))}
         </div>
 
-        <a href={p.code} target="_blank" rel="noopener" className="font-mono text-sm font-bold text-accent hover:underline">
-          View Code →
+        <a href={p.link} target="_blank" rel="noopener" className="font-mono text-sm font-bold text-ink hover:underline">
+          View Project →
         </a>
       </div>
     </motion.article>
@@ -86,8 +86,8 @@ export default function Projects() {
     <section id="projects" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeading
         label="Projects"
-        title="Things I've built"
-        subtitle="Personal work — side projects, built and shipped in my own time"
+        title="Things I've shipped"
+        subtitle="Real products I've worked on at Baylanka — not side projects"
       />
 
       <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.12} style={{ perspective: 1200 }}>
@@ -97,10 +97,10 @@ export default function Projects() {
       </RevealGroup>
 
       <Reveal delay={0.1} className="mt-12 rounded-md border border-border bg-bg-elevated p-10 text-center">
-        <p className="mb-5 text-xl font-semibold">Interested in collaborating?</p>
+        <p className="mb-5 font-display text-xl font-semibold">Interested in collaborating?</p>
         <a
           href="#contact"
-          className="inline-block rounded-sm bg-accent px-6 py-3 font-mono text-sm font-bold tracking-wide text-bg transition-colors hover:bg-accent-dim"
+          className="inline-block rounded-sm bg-accent px-6 py-3 font-mono text-sm font-bold uppercase tracking-wide text-bg transition-colors hover:bg-accent-dim"
         >
           Get In Touch
         </a>

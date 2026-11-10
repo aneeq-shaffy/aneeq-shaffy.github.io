@@ -4,14 +4,9 @@ import { RevealGroup, revealItem } from './Reveal.jsx'
 
 const BLOCKS = [
   {
-    code: 'WORK',
-    title: 'At Baylanka (now)',
+    code: 'LANG',
+    title: 'Languages & Frameworks',
     items: ['PHP', 'MySQL', 'Bootstrap', 'jQuery', 'Vanilla JS', 'SCSS'],
-  },
-  {
-    code: 'SIDE',
-    title: 'Personal projects',
-    items: ['React', 'Next.js', 'Node.js', 'MongoDB', 'Spring Boot', 'TypeScript'],
   },
   {
     code: 'TOOLS',
@@ -26,10 +21,10 @@ export default function Skills() {
       <SectionHeading
         label="Skills"
         title="Technical skills"
-        subtitle="What I actually ship with day to day — work stack and side-project stack"
+        subtitle="What I actually ship with, day to day, at Baylanka"
       />
 
-      <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.1}>
+      <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2" stagger={0.1}>
         {BLOCKS.map((block) => (
           <motion.div key={block.code} variants={revealItem} className="rounded-md border border-border bg-bg-elevated p-7">
             <div className="mb-5 flex items-center gap-3">
