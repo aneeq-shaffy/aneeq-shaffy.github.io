@@ -1,16 +1,32 @@
 import { motion } from 'motion/react'
 import SectionHeading from './SectionHeading.jsx'
 import Reveal from './Reveal.jsx'
+import Timeline from './Timeline.jsx'
+
+const COURSEWORK = [
+  'OOP',
+  'Database Management Systems',
+  'Data Structures & Algorithms',
+  'Programming Applications & Frameworks',
+  'Probability & Statistics',
+]
 
 export default function Education() {
   return (
-    <section id="education" className="mx-auto max-w-[1280px] border-t border-border px-5 py-20 sm:px-8 sm:py-28">
-      <SectionHeading label="Education" title="Academic background" subtitle="Qualifications & coursework" />
+    <section id="education" className="mx-auto max-w-[1280px] border-t-[3px] border-ink px-5 py-20 sm:px-8 sm:py-28">
+      <SectionHeading index="04" label="Education" title="Academic background" subtitle="Qualifications & coursework" />
 
-      <Reveal className="relative max-w-2xl rounded-md border border-border bg-bg-elevated p-7">
-        <div className="mb-2 font-mono text-sm text-ink-faint">Feb 2021 — 2026</div>
-        <h3 className="mb-1 font-display text-lg font-semibold">BSc (Hons) in Information Technology</h3>
-        <div className="mb-4 text-sm text-ink-dim">Sri Lanka Institute of Information Technology, Malabe</div>
+      <Timeline
+        items={[
+          {
+            year: '2021',
+            kicker: 'Feb 2021 — 2026 · SLIIT, Malabe',
+            title: 'BSc (Hons) in Information Technology',
+          },
+        ]}
+      />
+
+      <Reveal delay={0.1} className="hard relative mt-7 max-w-2xl bg-bg-elevated p-7 shadow-[6px_6px_0_var(--color-ink)]">
         <ul className="flex list-disc flex-col gap-2 pl-5 text-sm text-ink-dim">
           <li>
             Volunteered as Batch Representative, liaising between 150+ students and faculty to
@@ -19,7 +35,7 @@ export default function Education() {
               href="/assets/batch-rep-cert.png"
               target="_blank"
               rel="noopener"
-              className="font-mono text-ink hover:underline"
+              className="font-mono font-bold text-ink hover:underline"
             >
               View cert →
             </a>
@@ -31,17 +47,11 @@ export default function Education() {
             Relevant coursework
           </span>
           <div className="flex flex-wrap gap-2">
-            {[
-              'OOP',
-              'Database Management Systems',
-              'Data Structures & Algorithms',
-              'Programming Applications & Frameworks',
-              'Probability & Statistics',
-            ].map((item) => (
+            {COURSEWORK.map((item) => (
               <motion.span
                 key={item}
-                whileHover={{ scale: 1.05, borderColor: 'var(--color-ink)' }}
-                className="rounded-full border border-border px-3 py-1 text-sm text-ink-dim"
+                whileHover={{ scale: 1.04, backgroundColor: 'var(--color-accent)' }}
+                className="border-2 border-ink px-3 py-1 font-display text-xs font-bold uppercase tracking-wide"
               >
                 {item}
               </motion.span>

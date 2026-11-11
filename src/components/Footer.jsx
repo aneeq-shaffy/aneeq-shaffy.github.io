@@ -1,90 +1,54 @@
-import { useEffect, useRef } from 'react'
-import { animate, utils } from 'animejs'
+import TagReveal from './TagReveal.jsx'
+import Drips from './Drips.jsx'
+import IconButton from './IconButton.jsx'
+import { ICON_PATHS } from '../lib/icons.js'
 
-const NAV = [
-  { label: 'about', href: '#about' },
-  { label: 'experience', href: '#experience' },
-  { label: 'projects', href: '#projects' },
-  { label: 'education', href: '#education' },
-  { label: 'skills', href: '#skills' },
+const SOCIALS = [
+  { label: 'GitHub', href: 'https://github.com/aneeq-shaffy', path: ICON_PATHS.github },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aneeq-shaffy', path: ICON_PATHS.linkedin },
+  { label: 'Email', href: 'mailto:aneeqshaffy7@gmail.com', path: ICON_PATHS.mail },
 ]
 
-function LetterLink({ label, href }) {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    if (!ref.current) return
-    const letters = ref.current.querySelectorAll('.nav-letter')
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          animate(letters, {
-            translateY: [10, 0],
-            opacity: [0, 1],
-            duration: 500,
-            delay: utils.stagger(18),
-            ease: 'outQuad',
-          })
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.4 },
-    )
-    observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <a
-      href={href}
-      className="block w-max font-display text-2xl font-semibold uppercase text-ink transition-colors hover:text-ink-dim sm:text-3xl"
-    >
-      <span ref={ref} aria-label={label}>
-        {label.split('').map((ch, i) => (
-          <span key={i} aria-hidden className="nav-letter inline-block opacity-0">
-            {ch === ' ' ? ' ' : ch}
-          </span>
-        ))}
-      </span>
-    </a>
-  )
-}
+const NAV = [
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Education', href: '#education' },
+  { label: 'Skills', href: '#skills' },
+]
 
 export default function Footer() {
   return (
-    <section className="mx-auto max-w-[1280px] border-t border-border px-5 py-16 sm:px-8 sm:py-20">
-      <div className="flex flex-col gap-14">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <nav aria-label="Primary" className="flex flex-col gap-3">
+    <section className="border-t-[3px] border-ink bg-wall px-5 py-16 text-bg-elevated sm:px-8 sm:py-20">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-16">
+        <div className="flex flex-col items-start gap-10 sm:flex-row sm:items-end sm:justify-between">
+          <nav aria-label="Primary" className="flex flex-wrap gap-2">
             {NAV.map((item) => (
-              <LetterLink key={item.href} {...item} />
+              <a
+                key={item.href}
+                href={item.href}
+                className="border-[3px] border-transparent px-3 py-2 font-display text-sm font-bold uppercase tracking-wide transition-all duration-150 hover:-rotate-2 hover:border-bg-elevated"
+              >
+                {item.label}
+              </a>
             ))}
           </nav>
 
-          <div className="text-right">
-            <h2 className="font-display text-3xl font-bold uppercase leading-[0.95] text-ink sm:text-5xl">
-              Keep
-              <br />
-              Building<span className="text-ink-faint">.</span>
-            </h2>
-            <p className="mt-4 max-w-[26ch] text-sm text-ink-dim sm:ml-auto">
+          <div className="text-left sm:text-right">
+            <TagReveal text="Keep Building" rotate={-4} className="text-5xl sm:text-7xl" />
+            <Drips className="ml-auto mt-1 w-40" delay={400} />
+            <p className="mt-2 max-w-[30ch] font-mono text-xs text-sand sm:ml-auto">
               Open to full-time, freelance, and the occasional 1am debugging war story.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col items-start justify-between gap-4 border-t border-border pt-6 font-mono text-xs text-ink-faint sm:flex-row sm:items-center">
-          <span>© 2026 Aneeq Shaffy. All rights reserved.</span>
-          <div className="flex gap-6">
-            <a href="https://www.linkedin.com/in/aneeq-shaffy" target="_blank" rel="noopener" className="hover:text-ink">
-              LinkedIn
-            </a>
-            <a href="https://github.com/aneeq-shaffy" target="_blank" rel="noopener" className="hover:text-ink">
-              GitHub
-            </a>
-            <a href="mailto:aneeqshaffy7@gmail.com" className="hover:text-ink">
-              Email
-            </a>
+        <div className="flex flex-col items-start justify-between gap-6 border-t-[3px] border-bg-elevated/15 pt-6 font-mono text-xs sm:flex-row sm:items-center">
+          <span className="text-sand">© 2026 Aneeq Shaffy. All rights reserved.</span>
+          <div className="flex gap-3">
+            {SOCIALS.map((s) => (
+              <IconButton key={s.label} href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} label={s.label} path={s.path} />
+            ))}
           </div>
         </div>
       </div>

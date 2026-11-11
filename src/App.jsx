@@ -6,6 +6,8 @@ import Education from './components/Education.jsx'
 import Skills from './components/Skills.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import PageLoader from './components/PageLoader.jsx'
+import TapeMarquee from './components/TapeMarquee.jsx'
 import useLenis from './hooks/useLenis.js'
 
 export default function App() {
@@ -13,9 +15,11 @@ export default function App() {
 
   return (
     <div id="top" className="bg-bg">
+      <PageLoader />
       <Header />
       <main>
         <Hero />
+        <TapeMarquee />
         <Experience />
         <Projects />
         <Education />

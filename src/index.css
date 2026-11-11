@@ -2,25 +2,81 @@
 
 @theme {
   --font-mono: "JetBrains Mono", monospace;
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Outfit", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-tag: "Sedgwick Ave Display", cursive;
+  --font-marker: "Permanent Marker", cursive;
 
-  --color-bg: #f8f8f6;
-  --color-bg-elevated: #ffffff;
-  --color-border: #e4e3df;
-  --color-ink: #1a1a1a;
-  --color-ink-dim: #5a5a58;
-  --color-ink-faint: #a2a19c;
-  --color-accent: #1a1a1a;
-  --color-accent-dim: #3a3a38;
+  --color-bg: #e9e5dc;
+  --color-bg-elevated: #f2efe8;
+  --color-border: #121311;
+  --color-ink: #121311;
+  --color-ink-dim: #3a3a37;
+  --color-ink-faint: #8e8b84;
+  --color-accent: #ff5a1f;
+  --color-accent-dim: #d9460f;
+  --color-sand: #c9b79a;
+  --color-wall: #2f3a2c;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
+}
+
+/* Hard-edged paper object: thick ink border, flat offset shadow, no blur,
+   no radius — the kit's signature "street poster" treatment. */
+.hard {
+  border: 3px solid var(--color-ink);
+  border-radius: 0;
+}
+.hard-shadow {
+  box-shadow: 6px 6px 0 var(--color-ink);
+}
+.hard-shadow-accent {
+  box-shadow: 6px 6px 0 var(--color-accent);
+}
+.hard-shadow-sm {
+  box-shadow: 4px 4px 0 var(--color-ink);
+}
+
+@keyframes marquee-ltr {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-accent) 0%, transparent);
+  }
 }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Logo from './Logo.jsx'
 
 const NAV_ITEMS = [
   { href: '#about', label: 'About' },
@@ -8,55 +9,72 @@ const NAV_ITEMS = [
   { href: '#skills', label: 'Skills' },
 ]
 
-function Mark() {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden>
-      <path d="M12 2 L21 7.5 L21 16.5 L12 22 L3 16.5 L3 7.5 Z" stroke="currentColor" strokeWidth="1.3" />
-      <path d="M12 2 V22 M3 7.5 L21 16.5 M21 7.5 L3 16.5" stroke="currentColor" strokeWidth="0.8" opacity="0.5" />
-    </svg>
-  )
-}
-
 export default function Header() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between bg-bg/90 px-5 py-6 backdrop-blur-sm sm:px-8">
-      <a href="#top" className="flex items-center gap-2 text-ink">
-        <Mark />
-      </a>
+    <header className="sticky top-0 z-50 border-b-[3px] border-ink bg-accent">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+        <a href="#top" className="flex items-center gap-3 text-ink">
+          <Logo size={40} />
+          <span className="hidden font-display text-lg font-bold uppercase tracking-wide sm:inline">Aneeq Shaffy</span>
+        </a>
 
-      <nav className="hidden items-center gap-8 text-[0.9rem] sm:flex">
-        {NAV_ITEMS.map((item) => (
-          <a key={item.href} href={item.href} className="whitespace-nowrap text-ink-dim transition-colors hover:text-ink">
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <a href="#contact" className="hidden items-center gap-1.5 border-b border-ink pb-0.5 text-[0.9rem] text-ink sm:flex">
-        Get in touch <span className="text-sm">↗</span>
-      </a>
-
-      <button
-        aria-label="Toggle navigation"
-        onClick={() => setOpen((v) => !v)}
-        className="flex flex-col gap-1.5 p-2 sm:hidden"
-      >
-        <span className="h-0.5 w-[22px] bg-ink" />
-        <span className="h-0.5 w-[22px] bg-ink" />
-        <span className="h-0.5 w-[22px] bg-ink" />
-      </button>
-
-      {open && (
-        <nav className="absolute inset-x-0 top-full flex flex-col gap-4 border-b border-border bg-bg px-5 pb-6 pt-4 text-sm text-ink-dim sm:hidden">
+        <nav className="hidden items-center gap-1 sm:flex">
           {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="transition-colors hover:text-ink">
+            <a
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap border-[3px] border-transparent px-4 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-ink transition-all duration-150 hover:-rotate-3 hover:border-ink hover:bg-bg-elevated"
+            >
               {item.label}
             </a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="text-ink">
-            Get in touch ↗
+        </nav>
+
+        <a
+          href="/cv.pdf"
+          target="_blank"
+          rel="noopener"
+          className="hidden items-center gap-2 bg-ink px-4 py-2.5 font-display text-sm font-bold uppercase text-bg-elevated transition-transform duration-150 hover:rotate-2 hover:text-accent sm:flex"
+        >
+          CV
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" style={{ stroke: 'currentColor', strokeWidth: 2.5, strokeLinecap: 'square' }}>
+            <path d="M12 3v12M6 10l6 6 6-6M4 21h16" />
+          </svg>
+        </a>
+
+        <button
+          aria-label="Toggle navigation"
+          onClick={() => setOpen((v) => !v)}
+          className="flex flex-col gap-1.5 border-[3px] border-ink bg-bg-elevated p-2.5 sm:hidden"
+        >
+          <span className="h-0.5 w-5 bg-ink" />
+          <span className="h-0.5 w-5 bg-ink" />
+          <span className="h-0.5 w-5 bg-ink" />
+        </button>
+      </div>
+
+      {open && (
+        <nav className="flex flex-col gap-1 border-t-[3px] border-ink bg-bg-elevated px-5 pb-6 pt-4 sm:hidden">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="border-[3px] border-transparent px-3 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-ink hover:border-ink hover:bg-accent"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className="mt-2 inline-flex w-max items-center gap-2 bg-ink px-4 py-2.5 font-display text-sm font-bold uppercase text-bg-elevated"
+          >
+            CV ↓
           </a>
         </nav>
       )}
